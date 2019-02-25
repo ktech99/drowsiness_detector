@@ -1,7 +1,6 @@
 # Todo
 # Make GUI
 # Create Goal file
-# Read goal to achieve from file
 # Run in background
 
 # USAGE
@@ -21,12 +20,14 @@ import imutils
 import time
 import dlib
 import cv2
+import os.path
 
+GOAL = ""
 
 def sound_alarm(path):
     # play an alarm sound
     playsound.playsound(path)
-    ctypes.windll.user32.MessageBoxA(0, "Potato", "Wake up!", 0)
+    ctypes.windll.user32.MessageBoxA(0, GOAL, "Sleep detected!", 0)
 
 
 def eye_aspect_ratio(eye):
@@ -43,17 +44,6 @@ def eye_aspect_ratio(eye):
     ear = (A + B) / (2.0 * C)
     # return the eye aspect ratio
     return ear
-
-
-# construct the argument parse and parse the arguments
-ap = argparse.ArgumentParser()
-ap.add_argument("-p", "--shape-predictor", required=True,
-                help="path to facial landmark predictor")
-ap.add_argument("-a", "--alarm", type=str, default="",
-                help="path alarm .WAV file")
-ap.add_argument("-w", "--webcam", type=int, default=0,
-                help="index of webcam on system")
-args = vars(ap.parse_args())
 
 
 def run_detector():
@@ -171,6 +161,25 @@ def run_detector():
     vs.stop()
 
 
+def check_file():
+    if os.path.isfile("goal.txt"):
+        f = open("goal.txt", "r")
+        global GOAL
+        GOAL = f.read()
+    else:
+        # Todo
+        print "ask for goal and print"
+
+
+# construct the argument parse and parse the arguments
+ap = argparse.ArgumentParser()
+ap.add_argument("-p", "--shape-predictor", required=True,
+                help="path to facial landmark predictor")
+ap.add_argument("-a", "--alarm", type=str, default="",
+                help="path alarm .WAV file")
+ap.add_argument("-w", "--webcam", type=int, default=0,
+                help="index of webcam on system")
+args = vars(ap.parse_args())
+
+check_file()
 run_detector()
-
-
