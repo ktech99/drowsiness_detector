@@ -1,12 +1,19 @@
+# Todo
+# Make GUI
+# Create Goal file
+# Read goal to achieve from file
+# Run in background
+
 # USAGE
-# python detect_drowsiness.py --shape-predictor shape_predictor_68_face_landmarks.dat
-# python detect_drowsiness.py --shape-predictor shape_predictor_68_face_landmarks.dat --alarm alarm.wav
+# python detectector.py --shape-predictor shape_predictor_68_face_landmarks.dat
+# python detector.py --shape-predictor shape_predictor_68_face_landmarks.dat --alarm alarm.wav
 
 # import the necessary packages
 from scipy.spatial import distance as dist
 from imutils.video import VideoStream
 from imutils import face_utils
 from threading import Thread
+import ctypes
 import numpy as np
 import playsound
 import argparse
@@ -19,6 +26,7 @@ import cv2
 def sound_alarm(path):
     # play an alarm sound
     playsound.playsound(path)
+    ctypes.windll.user32.MessageBoxA(0, "Potato", "Wake up!", 0)
 
 
 def eye_aspect_ratio(eye):
@@ -33,7 +41,6 @@ def eye_aspect_ratio(eye):
 
     # compute the eye aspect ratio
     ear = (A + B) / (2.0 * C)
-
     # return the eye aspect ratio
     return ear
 
@@ -48,36 +55,36 @@ ap.add_argument("-w", "--webcam", type=int, default=0,
                 help="index of webcam on system")
 args = vars(ap.parse_args())
 
-# define two constants, one for the eye aspect ratio to indicate
-# blink and then a second constant for the number of consecutive
-# frames the eye must be below the threshold for to set off the
-# alarm
-EYE_AR_THRESH = 0.3
-EYE_AR_CONSEC_FRAMES = 48
-
-# initialize the frame counter as well as a boolean used to
-# indicate if the alarm is going off
-COUNTER = 0
-ALARM_ON = False
-
-# initialize dlib's face detector (HOG-based) and then create
-# the facial landmark predictor
-print("[INFO] loading facial landmark predictor...")
-detector = dlib.get_frontal_face_detector()
-predictor = dlib.shape_predictor(args["shape_predictor"])
-
-# grab the indexes of the facial landmarks for the left and
-# right eye, respectively
-(lStart, lEnd) = face_utils.FACIAL_LANDMARKS_IDXS["left_eye"]
-(rStart, rEnd) = face_utils.FACIAL_LANDMARKS_IDXS["right_eye"]
-
-# start the video stream thread
-print("[INFO] starting video stream thread...")
-vs = VideoStream(src=args["webcam"]).start()
-time.sleep(1.0)
-
 
 def run_detector():
+    # define two constants, one for the eye aspect ratio to indicate
+    # blink and then a second constant for the number of consecutive
+    # frames the eye must be below the threshold for to set off the
+    # alarm
+    EYE_AR_THRESH = 0.3
+    EYE_AR_CONSEC_FRAMES = 48
+
+    # initialize the frame counter as well as a boolean used to
+    # indicate if the alarm is going off
+    COUNTER = 0
+    ALARM_ON = False
+
+    # initialize dlib's face detector (HOG-based) and then create
+    # the facial landmark predictor
+    print("[INFO] loading facial landmark predictor...")
+    detector = dlib.get_frontal_face_detector()
+    predictor = dlib.shape_predictor(args["shape_predictor"])
+
+    # grab the indexes of the facial landmarks for the left and
+    # right eye, respectively
+    (lStart, lEnd) = face_utils.FACIAL_LANDMARKS_IDXS["left_eye"]
+    (rStart, rEnd) = face_utils.FACIAL_LANDMARKS_IDXS["right_eye"]
+
+    # start the video stream thread
+    print("[INFO] starting video stream thread...")
+    vs = VideoStream(src=args["webcam"]).start()
+    time.sleep(1.0)
+
     # loop over frames from the video stream
     while True:
         # grab the frame from the threaded video file stream, resize
@@ -159,10 +166,11 @@ def run_detector():
         # if the `q` key was pressed, break from the loop
         if key == ord("q"):
             break
+    # do a bit of cleanup
+    cv2.destroyAllWindows()
+    vs.stop()
 
 
 run_detector()
 
-# do a bit of cleanup
-cv2.destroyAllWindows()
-vs.stop()
+
