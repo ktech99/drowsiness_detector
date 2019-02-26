@@ -2,6 +2,7 @@
 # Make GUI
 # Create Goal file
 # Run in background
+# Set timer so not on constantly
 
 # USAGE
 # python detectector.py --shape-predictor shape_predictor_68_face_landmarks.dat
@@ -23,6 +24,7 @@ import cv2
 import os.path
 
 GOAL = ""
+
 
 def sound_alarm(path):
     # play an alarm sound
@@ -72,15 +74,18 @@ def run_detector():
 
     # start the video stream thread
     print("[INFO] starting video stream thread...")
-    vs = VideoStream(src=args["webcam"]).start()
-    time.sleep(1.0)
+    # vs = VideoStream(src=args["webcam"]).start()
+    #     # time.sleep(1.0)
+    cam = cv2.VideoCapture(0)
 
+    start_time = int(round(time.time() * 1000))
+    stop_time = int(round(time.time() * 1000)) + 10000
     # loop over frames from the video stream
     while True:
         # grab the frame from the threaded video file stream, resize
         # it, and convert it to grayscale
         # channels)
-        frame = vs.read()
+        ret, frame = cam.read()
         frame = imutils.resize(frame, width=450)
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
@@ -148,7 +153,6 @@ def run_detector():
             # thresholds and frame counters
             cv2.putText(frame, "EAR: {:.2f}".format(ear), (300, 30),
                         cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
-
         # show the frame
         cv2.imshow("Frame", frame)
         key = cv2.waitKey(1) & 0xFF
@@ -158,7 +162,7 @@ def run_detector():
             break
     # do a bit of cleanup
     cv2.destroyAllWindows()
-    vs.stop()
+    cam.release()
 
 
 def check_file():
