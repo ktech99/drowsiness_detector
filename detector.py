@@ -25,7 +25,6 @@ import os.path
 
 GOAL = ""
 
-
 def sound_alarm(path):
     # play an alarm sound
     playsound.playsound(path)
@@ -65,7 +64,7 @@ def run_detector():
     # the facial landmark predictor
     print("[INFO] loading facial landmark predictor...")
     detector = dlib.get_frontal_face_detector()
-    predictor = dlib.shape_predictor(args["shape_predictor"])
+    predictor = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
 
     # grab the indexes of the facial landmarks for the left and
     # right eye, respectively
@@ -76,12 +75,15 @@ def run_detector():
     print("[INFO] starting video stream thread...")
     # vs = VideoStream(src=args["webcam"]).start()
     #     # time.sleep(1.0)
-    cam = cv2.VideoCapture(0)
+    cam = cv2.VideoCapture(1 + cv2.CAP_DSHOW)
 
+    # Current time in millis
     start_time = int(round(time.time() * 1000))
-    stop_time = int(round(time.time() * 1000)) + 10000
+    #time 30 seconds later in millis
+    stop_time = int(round(time.time() * 1000)) + 5000
     # loop over frames from the video stream
     while True:
+
         # grab the frame from the threaded video file stream, resize
         # it, and convert it to grayscale
         # channels)
@@ -132,11 +134,10 @@ def run_detector():
                         # check to see if an alarm file was supplied,
                         # and if so, start a thread to have the alarm
                         # sound played in the background
-                        if args["alarm"] != "":
-                            t = Thread(target=sound_alarm,
-                                       args=(args["alarm"],))
-                            t.deamon = True
-                            t.start()
+                        t = Thread(target=sound_alarm,
+                                            args=("alarm.wav",))
+                        t.deamon = True
+                        t.start()
 
                     # draw an alarm on the frame
                     cv2.putText(frame, "DROWSINESS ALERT!", (10, 30),
@@ -155,10 +156,11 @@ def run_detector():
                         cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
         # show the frame
         cv2.imshow("Frame", frame)
-        key = cv2.waitKey(1) & 0xFF
+        cv2.waitKey(1) & 0xFF
 
         # if the `q` key was pressed, break from the loop
-        if key == ord("q"):
+        start_time = int(round(time.time() * 1000))z
+        if start_time > stop_time :
             break
     # do a bit of cleanup
     cv2.destroyAllWindows()
@@ -177,10 +179,10 @@ def check_file():
 
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
-ap.add_argument("-p", "--shape-predictor", required=True,
-                help="path to facial landmark predictor")
-ap.add_argument("-a", "--alarm", type=str, default="",
-                help="path alarm .WAV file")
+# ap.add_argument("-p", "--shape-predictor", required=True,
+#                 help="path to facial landmark predictor")
+# ap.add_argument("-a", "--alarm", type=str, default="",
+#                 help="path alarm .WAV file")
 ap.add_argument("-w", "--webcam", type=int, default=0,
                 help="index of webcam on system")
 args = vars(ap.parse_args())
