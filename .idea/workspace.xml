@@ -2,14 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="78c210ee-245a-47c2-acf6-06dc59dcae55" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/caller.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sleep_detector.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Atom.lnk" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../CSE414" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../IOcost" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Jit-versionControl" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../ML project.docx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../ML project.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Trash_Segregator_AI" beforeDir="false" afterPath="$PROJECT_DIR$/../Trash_Segregator_AI" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Trash_Segregator_AI" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../TuriCreateBlog" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../UWUnofficialTranscript.pdf" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../collective intelligence.pdf" beforeDir="false" />
@@ -33,7 +36,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/sleep_detector$run_detector.coverage" NAME="run detector Coverage Results" MODIFIED="1551264350625" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/sleep_detector$run_detector.coverage" NAME="run detector Coverage Results" MODIFIED="1551817818867" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/sleep_detector$run.coverage" NAME="run Coverage Results" MODIFIED="1551068419240" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/sleep_detector$run_caller.coverage" NAME="run caller Coverage Results" MODIFIED="1551266258652" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
@@ -41,13 +44,13 @@
     <session id="-863092970">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="7" />
+          <entry key="project.closed" value="9" />
           <entry key="project.open.time.43" value="1" />
-          <entry key="project.open.time.5" value="2" />
+          <entry key="project.open.time.5" value="3" />
           <entry key="project.open.time.7" value="3" />
-          <entry key="project.open.time.8" value="1" />
+          <entry key="project.open.time.8" value="2" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="8" />
+          <entry key="project.opened" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -63,36 +66,36 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Python Console" value="12" />
-          <entry key="py" value="1172" />
+          <entry key="py" value="1280" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="1184" />
+          <entry key="Python" value="1292" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/caller.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+            <state relative-caret-position="162">
+              <caret line="6" column="21" lean-forward="true" selection-start-line="2" selection-end-line="6" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/detector.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="161" column="51" selection-start-line="161" selection-start-column="51" selection-end-line="161" selection-end-column="51" />
+            <state relative-caret-position="300">
+              <caret line="190" column="12" selection-start-line="190" selection-start-column="12" selection-end-line="190" selection-end-column="12" />
               <folding>
-                <element signature="e#307#349#0" expanded="true" />
-                <marker date="1551266146569" expanded="true" signature="1229:1230" ph="..." />
-                <marker date="1551266146569" expanded="true" signature="6038:6676" ph="..." />
+                <element signature="e#274#316#0" expanded="true" />
+                <marker date="1551817816664" expanded="true" signature="1196:1197" ph="..." />
+                <marker date="1551817816664" expanded="true" signature="6094:6780" ph="..." />
               </folding>
             </state>
           </provider>
@@ -128,8 +131,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/venv/detector.py" />
-        <option value="$PROJECT_DIR$/detector.py" />
         <option value="$PROJECT_DIR$/caller.py" />
+        <option value="$PROJECT_DIR$/detector.py" />
       </list>
     </option>
   </component>
@@ -187,7 +190,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.run caller">
+  <component name="RunManager" selected="Python.run detector">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
@@ -349,22 +352,22 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/venv/detector.py" />
-    <entry file="file://$PROJECT_DIR$/detector.py">
+    <entry file="file://$PROJECT_DIR$/caller.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="161" column="51" selection-start-line="161" selection-start-column="51" selection-end-line="161" selection-end-column="51" />
-          <folding>
-            <element signature="e#307#349#0" expanded="true" />
-            <marker date="1551266146569" expanded="true" signature="1229:1230" ph="..." />
-            <marker date="1551266146569" expanded="true" signature="6038:6676" ph="..." />
-          </folding>
+        <state relative-caret-position="162">
+          <caret line="6" column="21" lean-forward="true" selection-start-line="2" selection-end-line="6" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/caller.py">
+    <entry file="file://$PROJECT_DIR$/detector.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+        <state relative-caret-position="300">
+          <caret line="190" column="12" selection-start-line="190" selection-start-column="12" selection-end-line="190" selection-end-column="12" />
+          <folding>
+            <element signature="e#274#316#0" expanded="true" />
+            <marker date="1551817816664" expanded="true" signature="1196:1197" ph="..." />
+            <marker date="1551817816664" expanded="true" signature="6094:6780" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

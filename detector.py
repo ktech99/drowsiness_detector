@@ -2,7 +2,6 @@
 # Make GUI
 # Create Goal file
 # Run in background
-# Set timer so not on constantly
 
 # USAGE
 # python detectector.py --shape-predictor shape_predictor_68_face_landmarks.dat
@@ -66,6 +65,7 @@ def run_detector():
     detector = dlib.get_frontal_face_detector()
     predictor = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
 
+    # grab the indexes of the facial landmarks for the left and
     # grab the indexes of the facial landmarks for the left and
     # right eye, respectively
     (lStart, lEnd) = face_utils.FACIAL_LANDMARKS_IDXS["left_eye"]
@@ -158,9 +158,10 @@ def run_detector():
         cv2.imshow("Frame", frame)
         cv2.waitKey(1) & 0xFF
 
-        # if the `q` key was pressed, break from the loop
-        start_time = int(round(time.time() * 1000))z
-        if start_time > stop_time :
+        # Time to run detector for
+        # Currently set to 1 seconds for testing
+        start_time = int(round(time.time() * 1000))
+        if start_time > stop_time:
             break
     # do a bit of cleanup
     cv2.destroyAllWindows()
@@ -188,4 +189,6 @@ ap.add_argument("-w", "--webcam", type=int, default=0,
 args = vars(ap.parse_args())
 
 check_file()
-run_detector()
+while True:
+    run_detector()
+    time.sleep(3)
